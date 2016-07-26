@@ -1,13 +1,17 @@
 package org.qohs.clicker;
 
 import org.qohs.clicker.io.AssetLoader;
+import org.qohs.clicker.io.InputHandler;
 import org.qohs.clicker.screens.GameScreen;
 import org.qohs.clicker.screens.MenuScreen;
+import org.qohs.clicker.screens.game.GameWorld;
+import org.qohs.clicker.screens.menu.Menu;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 
 /**
  * Do not touch this code - it's copy pasted from somewhere... it creates a game
@@ -16,7 +20,7 @@ import com.badlogic.gdx.Screen;
  */
 //I'm sorry, we touched it. @vigilante Derek Zhang
 
-public class Clicker extends Game implements ApplicationListener {
+public class Clicker extends Game {
     
     private static GameScreen gameScreen;
     private static MenuScreen menuScreen;
@@ -27,7 +31,16 @@ public class Clicker extends Game implements ApplicationListener {
         AssetLoader.load();
         gameScreen = new GameScreen();
         setClickerScreen(ScreenType.GAME);
+		Gdx.input.setInputProcessor(new InputHandler());
     }
+
+	@Override
+	public void render() {
+
+		//Gdx.gl.glClearColor(0, 0, 0, 0);
+		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render();
+	}
     
     public void setLocalClickerScreen(ScreenType screen) {
     	currentType = screen;
@@ -81,4 +94,13 @@ public class Clicker extends Game implements ApplicationListener {
         GAME,
         MENU;
     }
+
+	@Override
+	public void resize(int width, int height) {
+
+		GameWorld.GAMEWIDTH = width;
+		GameWorld.GAMEHEIGHT = height;
+		Menu.GAMEWIDTH = width;
+		Menu.GAMEHEIGHT = height;
+	}
 }
