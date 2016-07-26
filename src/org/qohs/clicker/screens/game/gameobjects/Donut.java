@@ -5,6 +5,7 @@ import org.qohs.clicker.screens.game.gameobjects.donutaspects.DonutTopping;
 import org.qohs.clicker.screens.game.gameobjects.donutaspects.DonutType;
 import org.qohs.clicker.screens.util.UpdateRenderObj;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -63,14 +64,14 @@ public class Donut implements UpdateRenderObj {
 			//System.out.println("ANIMATING");
 			
 			batcher.draw(typeTexture, 
-					GameWorld.GAMEWIDTH/2-clickproportx(typeTexture)/2, 
-					340-clickproporty(typeTexture)/2, 
+					GameWorld.GAMEWIDTH/2-clickproportx(typeTexture)/2,
+					GameWorld.GAMEHEIGHT/2-clickproporty(typeTexture)/2,//340
 					clickproportx(typeTexture), 
 					clickproporty(typeTexture));
 			if (toppingTexture != null) {
 				batcher.draw(toppingTexture, 
-						GameWorld.GAMEWIDTH/2-clickproportx(toppingTexture)/2, 
-						340-clickproporty(toppingTexture)/2, 
+						GameWorld.GAMEWIDTH/2-clickproportx(toppingTexture)/2,
+						GameWorld.GAMEHEIGHT/2-clickproporty(toppingTexture)/2,//340
 						clickproportx(toppingTexture), 
 						clickproporty(toppingTexture));
 			}
@@ -79,13 +80,13 @@ public class Donut implements UpdateRenderObj {
 			
 			batcher.draw(typeTexture, 
 					GameWorld.GAMEWIDTH/2-proportx(typeTexture)/2, //ensures a centered image
-					340-proporty(typeTexture)/2, 
+					GameWorld.GAMEHEIGHT/2-proporty(typeTexture)/2,//340
 					proportx(typeTexture), 
 					proporty(typeTexture));
 			if (toppingTexture != null) {
 				batcher.draw(toppingTexture, 
 						GameWorld.GAMEWIDTH/2-proportx(toppingTexture)/2, //ensures a centered image
-						340-proporty(toppingTexture)/2, 
+						GameWorld.GAMEHEIGHT/2-proporty(toppingTexture)/2,//340
 						proportx(toppingTexture), 
 						proporty(toppingTexture));
 			}
@@ -95,19 +96,19 @@ public class Donut implements UpdateRenderObj {
 	}
 	
 	public int proportx(TextureRegion texture) { //since not all textures are the same size, we have to bring proportions by a scale factor.
-		return (int) (texture.getRegionWidth()*.18f);
+		return (int) (texture.getRegionWidth()*.18f*4096/250);
 	}
 
 	public int proporty(TextureRegion texture) { //since not all textures are the same size, we have to bring proportions by a scale factor.
-		return (int) (texture.getRegionHeight()*.18f);
+		return (int) (texture.getRegionHeight()*.18f*4096/250);
 	}
 	
 	public int clickproportx(TextureRegion texture) {
-		return (int) (texture.getRegionWidth()*.17f);
+		return (int) (texture.getRegionWidth()*.17f*4096/250);
 	}
 	
 	public int clickproporty(TextureRegion texture) {
-		return (int) (texture.getRegionHeight()*.17f);
+		return (int) (texture.getRegionHeight()*.17f*4096/250);
 	}
 
 	public void update(float delta) { //calling of this method disabled as per constructor
