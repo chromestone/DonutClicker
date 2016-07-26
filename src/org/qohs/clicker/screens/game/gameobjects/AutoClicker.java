@@ -23,6 +23,7 @@ public class AutoClicker implements UpdateRenderObj {
 	}
 	
 	public void update(float delta){
+		delta/=2;
 		double clicks = delta * getCPS() + clickRemainder;
 		int actualClicks = (int) clicks;
 		clickRemainder = (float) clicks - actualClicks;
