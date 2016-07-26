@@ -18,8 +18,9 @@ public class Dropdown extends Button{
 	public Dropdown(int y, String title) {
 		super(GameWorld.GAMEWIDTH*1/24, y,
 				GameWorld.GAMEWIDTH*11/12, GameWorld.GAMEWIDTH*11/128, //roughly width and height
-				new TextureRegionDrawable(AssetLoader.dropdown), 
-				new TextureRegionDrawable(AssetLoader.dropdown_clicked));
+				null, null);
+				//new TextureRegionDrawable(AssetLoader.dropdown),
+				//new TextureRegionDrawable(AssetLoader.dropdown_clicked));
 		
 		OverlappingDrawable buttonDrawable = new OverlappingDrawable(AssetLoader.dropdown, AssetLoader.dropdownarrow, 
 				GameWorld.GAMEWIDTH*4/5, GameWorld.GAMEWIDTH/40, 
